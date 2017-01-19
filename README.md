@@ -1,2 +1,2 @@
 # sistema-tour
-calcetto raing system
+calcetto rating system
