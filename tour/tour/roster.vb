@@ -28,6 +28,8 @@ Public Class Roster
             ranking.Add(players(playerCount - 1), INIT_SCORE)
         Next
 
+        UpdateStandings()
+
     End Sub
 
 #Region "ENUMS"
