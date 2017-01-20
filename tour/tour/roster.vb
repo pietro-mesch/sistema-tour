@@ -162,7 +162,7 @@ Public Class Roster
 
         For i As Integer = 0 To playerCount - 1
             p = players(heap.Dequeue())
-            standings(i) = String.Format("{2}    R {1}    S {0}", p.strength, ranking(p), p.code)
+            standings(i) = String.Format("{2}" & vbTab & vbTab & "R {1}" & vbTab & vbTab & "S {0}", p.strength, ranking(p), p.code)
         Next
     End Sub
 
