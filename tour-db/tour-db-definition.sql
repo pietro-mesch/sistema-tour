@@ -11,7 +11,7 @@ CREATE TABLE rating (
 	rating		integer						DEFAULT NULL,
     cdat		timestamp without time zone	DEFAULT now(),
 	-- 
-    FOREIGN KEY (player) 		REFERENCES player(code) 	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (player) 		REFERENCES player(code) 	ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS game CASCADE;
@@ -20,7 +20,8 @@ CREATE TABLE game (
     a2   		char(3)		NOT NULL,
     b1   		char(3)		NOT NULL,
     b2   		char(3)		NOT NULL,
-	tournament	integer		DEFAULT NULL,
+	expec_a		integer		DEFAULT NULL,
+    expec_b		integer		DEFAULT NULL,
     score_a		integer		DEFAULT NULL,
     score_b		integer		DEFAULT NULL,
     played		timestamp without time zone		DEFAULT now()
