@@ -8,7 +8,7 @@ Public Class Roster
 
     Private Const INIT_SCORE = 0
     Private Const MAX_POT = 50
-    Private Const TEAM_MODE = e_teamDistributionMode.Proportional
+    Private Const TEAM_MODE = e_teamDistributionMode.Equal
 
     Private ranking As New Dictionary(Of Player, Double)
     Private players As New List(Of Player)
