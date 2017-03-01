@@ -37,13 +37,15 @@ rating_b1 integer := 0;
 rating_b2 integer := 0;
 qa double precision :=0;
 qb double precision :=0;
+win_goals integer := 0;
 BEGIN
 	IF (NEW.score_a IS NULL OR NEW.score_b IS NULL) THEN
 		RAISE EXCEPTION 'Team scores cannot be NULL.';
 	END IF;
-	IF NOT (NEW.score_a = 6 OR NEW.score_b = 6) THEN
-		RAISE EXCEPTION 'Either team must have reached 6 for the game to be over.';
+	IF NOT (NEW.score_a >= 5 OR NEW.score_b >= 5) THEN
+		RAISE EXCEPTION 'Cannot rank matches to less than 5 goals to win.';
 	END IF;
+	win_goals := GREATEST(NEW.score_a,NEW.score_b);
 	SELECT player_get_rating(NEW.a1) INTO rating_a1;
 	SELECT player_get_rating(NEW.a2) INTO rating_a2;
 	SELECT player_get_rating(NEW.b1) INTO rating_b1;
@@ -51,16 +53,16 @@ BEGIN
 	qa := 10^(0.5 * 0.5 *(rating_a1 + rating_a2)/delta75());
 	qb := 10^(0.5 * 0.5 *(rating_b1 + rating_b2)/delta75());
 	IF qa > qb THEN
-		NEW.expec_a := 6;
-		NEW.expec_b := (6*qb/qa)::integer;
+		NEW.expec_a := win_goals;
+		NEW.expec_b := (win_goals*qb/qa)::integer;
 	END IF;
 	IF qa < qb THEN
-		NEW.expec_a := (6*qa/qb)::integer;
-		NEW.expec_b := 6;
+		NEW.expec_a := (win_goals*qa/qb)::integer;
+		NEW.expec_b := win_goals;
 	END IF;
 	IF NEW.expec_a = NEW.expec_b OR (NEW.expec_a IS NULL AND NEW.expec_b IS NULL) THEN
-		NEW.expec_a := 5;
-		NEW.expec_b := 5;
+		NEW.expec_a := win_goals - 1;
+		NEW.expec_b := win_goals - 1;
 	END IF;
 	raise notice 'Expected score: % - %', NEW.expec_a, NEW.expec_b;
 	RETURN NEW;
