@@ -9,14 +9,20 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION max_pot() RETURNS integer as $$
 DECLARE
-delta integer := 50;
+delta integer := 20;
 BEGIN
 	RETURN delta;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION starting_score() RETURNS integer as $$
+DECLARE
+base integer := 1000;
+BEGIN
+	RETURN base;
+END;
+$$ LANGUAGE plpgsql;
 -----------------------------------------------------------------------------------------------------
-
-
 
 CREATE OR REPLACE FUNCTION player_get_rating(player_code char) RETURNS integer as $$
 DECLARE
@@ -118,7 +124,7 @@ FOR EACH ROW EXECUTE PROCEDURE game_process_score();
 CREATE OR REPLACE FUNCTION new_player_notify_func() RETURNS trigger as $$
 BEGIN
 	PERFORM pg_notify('tour_channel','ANO');
-	INSERT INTO rating (player, rating) VALUES (NEW.code, 0);
+	INSERT INTO rating (player, rating) VALUES (NEW.code, starting_score());
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

@@ -1,13 +1,25 @@
-﻿truncate player cascade;
-insert into player (code, name) VALUES
-('PRO','Andrea Procaccini'),
-('EDE','Edmondo Silvestri'),
-('PEZ','Marco Pezzulla'),
-('MZK','Pietro Meschini'),
-('CAP','Daniele Capuano'),
-('JUS','Giuseppe Berellini'),
-('GIO','Giorgio Maltempi'),
-('TDD','Daniele Tiddi');
+truncate player cascade;
+insert into player (code, name) VALUES ('PRO','Andrea Procaccini');
+insert into player (code, name) VALUES ('EDE','Edmondo Silvestri');
+insert into player (code, name) VALUES ('PEZ','Marco Pezzulla');
+insert into player (code, name) VALUES ('MZK','Pietro Meschini');
+insert into player (code, name) VALUES ('CAP','Daniele Capuano');
+insert into player (code, name) VALUES ('JUS','Giuseppe Berellini');
+insert into player (code, name) VALUES ('GIO','Giorgio Maltempi');
+insert into player (code, name) VALUES ('TDD','Daniele Tiddi');
+insert into player (code, name) VALUES ('AGO','Agostino Annunziata');
+insert into player (code, name) VALUES ('RIC','Riccardo Pozzati');
+insert into player (code, name) VALUES ('ALE','Alessandro Attanasi');
+insert into player (code, name) VALUES ('GPA','Giampaolo Torresi');
+insert into player (code, name) VALUES ('SIM','Simone DeCristofaro');
+insert into player (code, name) VALUES ('CHR','Chiara Creato');
+insert into player (code, name) VALUES ('NTZ','Matteo Sterlicchio');
+insert into player (code, name) VALUES ('MAX','Massimiliano Matarazzo');
+insert into player (code, name) VALUES ('CLA','Claudio Petrocelli');
+insert into player (code, name) VALUES ('FOR','Fortunato Rosa');
+insert into player (code, name) VALUES ('MEL','Melvin Massotti');
+insert into player (code, name) VALUES ('FER','Ferruccio Fiorucci');
+insert into player (code, name) VALUES ('MRN','Mariano Biasella');
 select * from (SELECT DISTINCT ON (player) * from rating order by player, cdat desc) as t order by rating desc;
 
 TRUNCATE game CASCADE;
@@ -35,23 +47,18 @@ insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PEZ','MZK','PRO',6
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('TDD','GIO','EDE','PEZ',6,4);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','MZK','CAP','GIO',6,3);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('PRO','MZK','EDE','CAP',6,3);
-,,,,,
+
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','MZK','EDE','PEZ',1,6);
-insert into player (code, name) VALUES ('GPA','Giampaolo Torresi');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('GPA','JUS','EDE','PEZ',2,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PEZ','GPA','EDE',6,1);
-insert into player (code, name) VALUES ('SIM','Simone DeCristofaro');
-insert into player (code, name) VALUES ('CHR','Chiara Creato');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','PRO','CAP','CHR',6,1);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','PRO','JUS','CAP',6,0);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PRO','SIM','PEZ',4,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','CAP','PEZ',6,4);
-insert into player (code, name) VALUES ('NTZ','Matteo Sterlicchio');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','NTZ','JUS','CAP',6,4);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','MZK','PRO','PEZ',3,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('NTZ','TDD','CAP','GIO',3,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('NTZ','PEZ','EDE','TDD',6,4);
-insert into player (code, name) VALUES ('MAX','Massimiliano Matarazzo');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','EDE','MAX','PRO',2,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MAX','TDD','EDE','CAP',6,2);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MAX','CAP','NTZ','PRO',2,6);
@@ -59,7 +66,6 @@ insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MAX','CAP','NTZ','PRO',2
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('GPA','PEZ','SIM','CAP',6,2);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PEZ','TDD','PRO',6,4);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('TDD','EDE','CAP','NTZ',4,6);
-insert into player (code, name) VALUES ('CLA','Claudio Petrocelli');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CLA','TDD','SIM','PRO',3,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','EDE','CAP','PEZ',6,4);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CLA','TDD','NTZ','PRO',4,6);
@@ -74,13 +80,10 @@ insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('PRO','PEZ','CAP','MZK',6
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','TDD','EDE','PRO',5,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','SIM','EDE','PRO',5,6);
 
-insert into player (code, name) VALUES ('FOR','Fortunato Rosa');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PEZ','CAP','FOR',2,6);
-insert into player (code, name) VALUES ('MEL','Melvin Massotti');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','MEL','GPA',6,3);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','TDD','EDE','CAP',6,1);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PEZ','TDD','PRO',6,5);
-insert into player (code, name) VALUES ('FER','Ferruccio Fiorucci');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('FOR','MEL','FER','GPA',6,5);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','SIM','CAP','MEL',2,6);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('FOR','PEZ','MZK','PRO',4,6);
@@ -122,11 +125,9 @@ insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MEL','EDE','CAP','PRO',2
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MEL','PRO','CAP','SIM',5,2);
 
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','MZK','EDE','GIO',5,2);
-insert into player (code, name) VALUES ('ALE','Alessandro Attanasi');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('TDD','ALE','EDE','GPA',2,5);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MEL','MZK','TDD','SIM',5,1);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PEZ','GPA','PRO',5,2);
-insert into player (code, name) VALUES ('RIC','Riccardo Pozzati');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('TDD','MZK','NTZ','RIC',5,2);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','MZK','TDD','NTZ',5,4);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','TDD','MEL','PEZ',1,5);
@@ -144,5 +145,33 @@ insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','TDD','GPA','FOR',5
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MEL','PEZ','EDE','TDD',5,2);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','MEL','PEZ',2,5);
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PRO','PEZ','TDD',2,5);
-insert into player (code, name) VALUES ('AGO','Agostino Annunziata');
 insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('AGO','MZK','MEL','PEZ',5,3);
+
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','EDE','GPA','ALE',0,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','PEZ','GPA','TDD',5,2);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('TDD','JUS','EDE','ALE',5,3);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','MZK','NTZ','PEZ',4,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','MZK','EDE','TDD',5,3);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','TDD','EDE','JUS',5,0);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','PRO','GPA','PEZ',5,3);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','PRO','GPA','PEZ',2,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('JUS','MAX','GPA','TDD',5,1);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','PEZ','EDE','TDD',5,1);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','TDD','PEZ','MAX',5,1);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','PEZ','CAP','JUS',1,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MAX','PRO','MZK','PEZ',5,1);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','MZK','TDD','NTZ',3,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','CAP','PEZ',5,2);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','CAP','PEZ',5,2);
+
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('PRO','PEZ','CAP','GPA',4,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','MZK','PRO','GPA',5,3);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','PRO','EDE','FER',5,4);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','SIM','PRO','PEZ',5,2);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('EDE','MZK','PEZ','FER',5,4);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','FER','PRO','NTZ',5,4);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('GIO','PEZ','SIM','PRO',0,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('CAP','MZK','FER','PEZ',1,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('SIM','PRO','CAP','FER',3,5);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','SIM','MRN','FER',5,1);
+insert into game (a1,a2,b1,b2,score_a,score_b) VALUES ('MZK','FER','SIM','MRN',5,2);
