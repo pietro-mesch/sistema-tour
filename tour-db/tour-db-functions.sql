@@ -33,6 +33,16 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION player_get_ko(player_code char) RETURNS setof record as $$
+DECLARE
+player_ko record;
+BEGIN
+FOR player_ko IN SELECT a1,a2,b1,b2,score_a,score_b FROM game WHERE ((a1  = $1 OR a2 = $1) AND score_a = 0) OR ((b1  = $1 OR b2 = $1) AND score_b = 0) LOOP
+	RETURN NEXT player_ko;
+END LOOP;
+RETURN;
+END;
+$$ LANGUAGE plpgsql;
 -----------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION game_check_score() RETURNS trigger as $$
